@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #e68415;
+    color: #0f0f0f;
+    overflow-x: hidden; /* Prevents unwanted side-scrolling on mobile */
+}
+
+/* Header */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: rgb(222, 147, 18);
+    border-bottom: 1px solid #d01616;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.search-bar {
+    display: flex;
+    flex: 0.6; /* Allows search bar to grow/shrink */
+    justify-content: center;
+}
+
+.search-bar input {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px 15px;
+    border: 1px solid #de1e1e;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 8px 15px;
+    border: 1px solid #f5aa14;
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Main Layout */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 20px;
+    max-width: 1300px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.video-player video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: black;
+    border-radius: 12px;
+}
+
+/* Video Details */
+.video-info h1 { 
+    font-size: 1.4rem; 
+    margin: 15px 0 5px; 
+    line-height: 1.3;
+}
+
+.stats { color: #606060; font-size: 0.9rem; margin-bottom: 10px; }
+hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
+
+.channel-info { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+.avatar { width: 40px; height: 40px; background: #ddd; border-radius: 50%; flex-shrink: 0; }
+.sub-btn { 
+    background: #0f0f0f; color: white; border: none; 
+    padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer;
+    margin-left: auto;
+}
+
+/* Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+
+.side-card { display: flex; gap: 12px; margin-bottom: 12px; cursor: pointer; }
+
+.side-card img { 
+    border-radius: 8px; 
+    width: 160px; 
+    aspect-ratio: 16 / 9; 
+    object-fit: cover; 
+    flex-shrink: 0; 
+}
+
+.side-content h4 { 
+    font-size: 0.9rem; 
+    margin-bottom: 4px; 
+    line-height: 1.2; 
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.side-content p { font-size: 0.8rem; color: #606060; }
+
+/* --- MOBILE RESPONSIVENESS --- */
+
+@media (max-width: 1024px) {
+    .container { 
+        grid-template-columns: 1fr; /* Stacks sidebar below video */
+        padding: 0 15px;
+    }
+    
+    .search-bar {
+        flex: 1;
+        margin: 0 10px;
+    }
+
+    .search-bar input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .top-nav {
+        padding: 10px;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .search-bar {
+        display: none; /* Hides search bar on very small phones to prevent crowding */
+    }
+
+    .video-player video {
+        border-radius: 0; /* Makes video feel more immersive on small screens */
+    }
+
+    .side-card img {
+        width: 120px; /* Smaller thumbnails for mobile */
+    }
+}
